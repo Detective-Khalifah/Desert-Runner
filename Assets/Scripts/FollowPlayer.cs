@@ -7,7 +7,7 @@ public class FollowPlayer : MonoBehaviour
 
     public GameObject player;
     public Quaternion playerRotationDirection;
-    public Vector3 offset = new Vector3(0, 2, -1.75f);
+    public Vector3 offset;
     private Vector3 dest;
 
     public float rotationSpeed;
@@ -16,13 +16,14 @@ public class FollowPlayer : MonoBehaviour
     void Start()
     {
         transform.Rotate(Vector3.zero);
+        offset = new Vector3(0, 2, -1.75f);
         transform.position = player.transform.position + offset;
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+         offset = new Vector3(0, player.transform.position.y + 2, player.transform.position.z -1.75f);
     }
 
     private void LateUpdate()
@@ -33,7 +34,8 @@ public class FollowPlayer : MonoBehaviour
 
         // Rotate Camera when player turns
         // playerRotationDirection = player.transform.rotation;
-        playerRotationDirection = Quaternion.LookRotation(-offset, Vector3.up);
-        transform.rotation = Quaternion.RotateTowards(player.transform.rotation, playerRotationDirection, rotationSpeed);
+        // playerRotationDirection = Quaternion.LookRotation(-offset);
+        // transform.rotation = Quaternion.RotateTowards(player.transform.rotation, playerRotationDirection, rotationSpeed);
+        transform.rotation = player.transform.rotation;
     }
 }
