@@ -19,8 +19,8 @@ public class ObstacleController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Vector3 chaseDirection = (player.transform.position - transform.position).normalized;
-        obstacleRb.AddForce(chaseDirection * speed);
+        // Vector3 chaseDirection = (player.transform.position - transform.position).normalized;
+        // obstacleRb.AddForce(chaseDirection * speed);
 
         // Destroy obstacles after player completes level
     }
