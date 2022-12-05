@@ -5,5 +5,6 @@ A maze game where the player character tries to find an exit before the time run
 ##### This is a project developed as part of the mentorship phase of GameUp Africa Bootcamp 2022.
  
 Team members:
-[Anamelechi S.](https://github.com/JINX-D)
-[A. Uzairu](https://github.com/Detective-Khalifah)
+-------------
+1. [A. Uzairu](https://github.com/Detective-Khalifah)
+2. [Anamelechi S.](https://github.com/JINX-D)
