@@ -7,7 +7,7 @@ public class FollowPlayer : MonoBehaviour
 
     public GameObject player;
     public Quaternion playerRotationDirection;
-    public Vector3 offset = new Vector3(0, 0, -2.5f);
+    public Vector3 offset = new Vector3(0, 2, -1.75f);
     private Vector3 dest;
 
     public float rotationSpeed;
