@@ -8,16 +8,17 @@ public class GameManager : MonoBehaviour
 {
 
     public TextMeshProUGUI timeText;
-    public TextMeshProUGUI gameOverText;
-    public GameObject titleScreen;
-    public Button restartButton;
+    // public TextMeshProUGUI gameOverText;
+    // public GameObject titleScreen;
+    // public Button restartButton;
 
-    private float timeLeft = 60;
+    private float timeLeft = 120;
     public bool isGameActive;
 
     // Start is called before the first frame update
     void Start()
     {
+        isGameActive = true;
         UpdateTimer(timeLeft);
     }
 
@@ -43,8 +44,8 @@ public class GameManager : MonoBehaviour
     // Stop game, bring up game over text and restart button
     public void GameOver()
     {
-        gameOverText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
+        // gameOverText.gameObject.SetActive(true);
+        // restartButton.gameObject.SetActive(true);
         isGameActive = false;
     }
 
