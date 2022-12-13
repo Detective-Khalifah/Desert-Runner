@@ -14,10 +14,14 @@ public class JamesController : MonoBehaviour
     private Transform cameraMainTransform;
     private bool groundedJames;
 
-    [SerializeField] private float jamesSpeed = 2.0f;
-    [SerializeField] private float jumpHeight = 1.0f;
-    [SerializeField] private float gravityForce = -9.81f;
-    [SerializeField] private float rotationSpeed = 4f;
+    [SerializeField, Tooltip("James speed multiplier.")]
+    private float jamesSpeed = 2.0f;
+    [SerializeField, Tooltip("How high James should jump.")]
+    private float jumpHeight = 1.0f;
+    [SerializeField, Tooltip("Downwards force on the player.")]
+    private float gravityForce = -9.81f;
+    [SerializeField, Tooltip("Rotation speed multiplier.")]
+    private float rotationSpeed = 4f;
 
     private void OnEnable()
     {
@@ -46,12 +50,16 @@ public class JamesController : MonoBehaviour
 
         Vector2 movement = movementControl.action.ReadValue<Vector2>();
         Vector3 move = new Vector3(movement.x, 0, movement.y);
+        // On X & Z axes
         move = cameraMainTransform.forward * move.z + cameraMainTransform.right * move.x;
         move.y = 0f;
         controller.Move(move * Time.deltaTime * jamesSpeed);
 
+        // if (move != Vector3.zero) gameObject.transform.forward = move;
+
         if (jumpControl.action.triggered && groundedJames) jamesVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravityForce);
 
+        // On Y axis
         jamesVelocity.y += gravityForce * Time.deltaTime;
         controller.Move(jamesVelocity * Time.deltaTime);
 
