@@ -79,7 +79,7 @@ public class PlayerC : MonoBehaviour
         {
             float targetAngle = Mathf.Atan2(input.x, input.y) * Mathf.Rad2Deg;// + cameraTransform.localEulerAngles.magnitude;
             Quaternion rotation = Quaternion.Euler(0, targetAngle, 0);
-            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
         }
     }
 
