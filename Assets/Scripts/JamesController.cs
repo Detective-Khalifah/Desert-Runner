@@ -8,6 +8,7 @@ public class JamesController : MonoBehaviour
 {
     [SerializeField] private InputActionReference movementControl;
     [SerializeField] private InputActionReference jumpControl;
+    [SerializeField] private AudioSource audioSource;
 
     private CharacterController controller;
     private Vector3 jamesVelocity;
@@ -68,6 +69,32 @@ public class JamesController : MonoBehaviour
             float targetAngle = Mathf.Atan2(movement.x, movement.y) * Mathf.Rad2Deg + cameraMainTransform.eulerAngles.y;
             Quaternion rotation = Quaternion.Euler(0f, targetAngle, 0f);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, Time.deltaTime * rotationSpeed);
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.tag.Equals("Mummy"))
+        {
+            Debug.Log("You hit the Mummy. Game Over!");
+            GameManager.gameOver = true;
+        }
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        string tag = other.gameObject.tag;
+        Debug.Log("Trigger Tag: " + tag);
+        switch (tag)
+        {
+            case "Exit":
+                GameManager.levelCompleted = true;
+                break;
+            case "Mummy":
+                GameManager.gameOver = true;
+                break;
+            default:
+                break;
         }
     }
 }
